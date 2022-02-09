@@ -1,51 +1,17 @@
+import React from "react";
 import {
-  BrowserRouter,
-  Routes,
-  Route
+  BrowserRouter, Route, Routes
 } from "react-router-dom";
-
+import CartPage from './components/pages/CartPage';
 import HomePage from './components/pages/HomePage';
 import SignInPage from './components/pages/SignInPage';
-import CartPage from './components/pages/CartPage';
-import React, { useState } from "react";
-
-const shoppingCartInitialState = [];
+import { ShoppingCartProvider } from "./context/shoppingCartContext";
 
 export const shoppingCartContext = React.createContext();
 
 function App() {
-
-  const [shoppingCart, setShoppingCart] = useState(shoppingCartInitialState);
-
-  const removeItem = (id) => {
-    setShoppingCart(
-      shoppingCart.filter(item => item.id !== id)
-    )
-  };
-
-  // Takes a product, and adds it to the shopping cart.
-  const addItemToCart = (product) => {
-    
-    setShoppingCart(
-      [ ...shoppingCart,
-        {
-          id: product.id,
-          title: product.title,
-          price: product.price,
-          quantity: 1,
-          image: product.image
-        }
-      ]
-    );
-  };
-
-  const emptyShoppingCart = () => {
-    setShoppingCart(shoppingCartInitialState);
-  }
-  
-
   return (
-    <shoppingCartContext.Provider value={{ shoppingCart, removeItem, addItemToCart, emptyShoppingCart }}>
+    <ShoppingCartProvider>
       <div className="App">
         <BrowserRouter>
           <Routes>
@@ -58,7 +24,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
-    </shoppingCartContext.Provider>
+    </ShoppingCartProvider>
   );
 }
 

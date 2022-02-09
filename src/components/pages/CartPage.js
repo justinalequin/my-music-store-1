@@ -1,15 +1,15 @@
+import HomeIcon from '@mui/icons-material/Home';
+import ReplayIcon from '@mui/icons-material/Replay';
 import { Box, Typography } from '@mui/material';
-import React, { useContext, useState } from 'react';
+import Button from '@mui/material/Button';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useShoppingCart } from '../../context/shoppingCartContext';
 import CartItem from '../CartItem';
 import Layout from '../layout/Layout';
-import Button from '@mui/material/Button';
-import ReplayIcon from '@mui/icons-material/Replay';
-import HomeIcon from '@mui/icons-material/Home';
-import { Link } from 'react-router-dom';
-import { shoppingCartContext } from '../../App';
 
 const CartPage = (props) => {
-  const { shoppingCart, emptyShoppingCart } = useContext(shoppingCartContext);
+  const { shoppingCart, emptyShoppingCart } = useShoppingCart();
 
   return (
     <Layout>

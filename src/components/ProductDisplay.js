@@ -8,11 +8,11 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import React, { useContext } from 'react';
-import { shoppingCartContext } from '../App';
+import { shoppingCartContext, useShoppingCart } from '../context/shoppingCartContext';
 
 export default function ProductDisplay(props) {
 
-  const { addItemToCart } =  useContext(shoppingCartContext);
+  const { addItemToCart } =  useShoppingCart();
 
   const {
     product,

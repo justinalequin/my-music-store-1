@@ -4,12 +4,12 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import React, { useContext } from 'react';
-import { shoppingCartContext } from '../App';
+import React from 'react';
+import { useShoppingCart } from '../context/shoppingCartContext';
 
 const CartItem = (props) => {
 
-  const { removeItem } = useContext(shoppingCartContext);
+  const { removeItem } = useShoppingCart();
 
   const {
     cartItem: {
