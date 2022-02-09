@@ -8,7 +8,9 @@ import React from 'react';
 
 const CartItem = (props) => {
 
-  const {cartItem: {
+  const {
+    removeItem,
+    cartItem: {
     id,
     title,
     image,
@@ -17,11 +19,11 @@ const CartItem = (props) => {
   }} = props;
 
   return (
-     <Card sx={{ display: 'flex', minHeight: '100px' }}>
+     <Card sx={{ display: 'flex' }}>
        <Box display="flex" flexDirection="column" justifyContent="center">
         <CardMedia
           component="img"
-          sx={{ maxWidth: 130, p: 2 }}
+          sx={{ height: 80, maxWidth: 80, p: 2 }}
           image={image}
           alt="Live from space album cover"
         />
@@ -41,7 +43,7 @@ const CartItem = (props) => {
       </Box>
       <Box display="flex" flexDirection="column" justifyContent="center">
         <Box mb={1} px={2}>
-          <IconButton>
+          <IconButton onClick={() => removeItem(id)}>
             <DeleteForeverIcon color="error" />
           </IconButton>
         </Box>

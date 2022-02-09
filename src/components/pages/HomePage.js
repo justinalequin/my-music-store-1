@@ -4,7 +4,8 @@ import { fetchProducts } from '../../fetchData';
 import Layout from '../layout/Layout';
 import ProductDisplay from '../ProductDisplay';
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const { addItemToCart } = props;
   const [productData, setProductData] = useState();
 
   
@@ -23,9 +24,11 @@ const HomePage = () => {
         <Box
           key={product.id}
           mb={4}
+          display="flex"
+          alignItems="center"
         >
           <ProductDisplay
-            
+            addItemToCart={addItemToCart}            
             product={{
               id: product.id,
               title: product.title,

@@ -11,17 +11,27 @@ import * as React from 'react';
 
 export default function ProductDisplay(props) {
 
-  const {product: {
+  const {
+    addItemToCart,
+    product,
+  } = props;
+
+  const {
     id,
     title,
     brand,
     price,
     description,
     image,
-  }} = props;
+  } = product;
+
+  const handleAddToCart = () => {
+    console.log('This func has been call')
+    addItemToCart(product)
+  }
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ mx: 'auto', maxWidth: 345 }} style={{ paddingTop: '10px' }}>
       <CardHeader
         action={
           <Typography>${price/100}</Typography>
@@ -41,7 +51,7 @@ export default function ProductDisplay(props) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Button variant="text">Add to cart</Button>
+        <Button variant="text" onClick={handleAddToCart}>Add to cart</Button>
         <IconButton aria-label="add to favorites" sx={{marginLeft: 'auto'}}>
           <FavoriteIcon />
         </IconButton>
