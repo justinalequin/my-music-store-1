@@ -5,7 +5,6 @@ import Layout from '../layout/Layout';
 import ProductDisplay from '../ProductDisplay';
 
 const HomePage = (props) => {
-  const { addItemToCart } = props;
   const [productData, setProductData] = useState();
 
   
@@ -28,7 +27,6 @@ const HomePage = (props) => {
           alignItems="center"
         >
           <ProductDisplay
-            addItemToCart={addItemToCart}            
             product={{
               id: product.id,
               title: product.title,

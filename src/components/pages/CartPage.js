@@ -1,14 +1,15 @@
 import { Box, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import CartItem from '../CartItem';
 import Layout from '../layout/Layout';
 import Button from '@mui/material/Button';
 import ReplayIcon from '@mui/icons-material/Replay';
 import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom';
+import { shoppingCartContext } from '../../App';
 
 const CartPage = (props) => {
-  const { removeItem, shoppingCart, emptyShoppingCart } = props;
+  const { shoppingCart, emptyShoppingCart } = useContext(shoppingCartContext);
 
   return (
     <Layout>
@@ -16,7 +17,6 @@ const CartPage = (props) => {
         {shoppingCart.map(item => (
           <Box mb={4} key={item.id}>
             <CartItem
-              removeItem={removeItem}
               cartItem={{
                 id: item.id,
                 title: item.title,
