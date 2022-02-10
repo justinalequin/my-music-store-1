@@ -9,7 +9,7 @@ import CartItem from '../CartItem';
 import Layout from '../layout/Layout';
 
 const CartPage = (props) => {
-  const { shoppingCart, emptyShoppingCart } = useShoppingCart();
+  const { shoppingCart, emptyShoppingCart, total } = useShoppingCart();
 
   return (
     <Layout>
@@ -28,7 +28,7 @@ const CartPage = (props) => {
           </Box>
         ))}
         <Box display="flex" justifyContent="center" mb={2}>
-          <Typography>Total: $9999.99</Typography>
+          <Typography>Total: ${ total / 100}</Typography>
         </Box>
         <Box display="flex" justifyContent="center" mb={2}>
           <Button sx={{width: '220px'}} variant="contained">Checkout</Button>
