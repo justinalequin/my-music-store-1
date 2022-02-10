@@ -3,6 +3,7 @@ import {
   BrowserRouter, Route, Routes
 } from "react-router-dom";
 import CartPage from './components/pages/CartPage';
+import CounterPage from "./components/pages/CounterPage";
 import HomePage from './components/pages/HomePage';
 import SignInPage from './components/pages/SignInPage';
 import { ShoppingCartProvider } from "./context/shoppingCartContext";
@@ -19,6 +20,10 @@ function App() {
             <Route
               path="cart"
               element={<CartPage />}
+            />
+            <Route
+              path="counter"
+              element={<CounterPage />}
             />
             <Route path="sign-in" element={<SignInPage />} />
           </Routes>
