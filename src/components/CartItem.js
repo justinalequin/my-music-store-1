@@ -5,11 +5,19 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { useShoppingCart } from '../context/shoppingCartContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeItemFromCartAction } from '../reduxStore';
 
 const CartItem = (props) => {
 
-  const { removeItem } = useShoppingCart();
+  const dispatch = useDispatch();
+
+  const removeItem = (id) => {
+    dispatch({
+      type: removeItemFromCartAction,
+      itemId: id,
+    })
+  }
 
   const {
     cartItem: {
@@ -19,6 +27,10 @@ const CartItem = (props) => {
     quantity,
     price,
   }} = props;
+
+  const reduxState = useSelector(state => state)
+
+  console.log('reduxState: ', reduxState);
 
   return (
      <Card sx={{ display: 'flex' }}>

@@ -3,13 +3,24 @@ import ReplayIcon from '@mui/icons-material/Replay';
 import { Box, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useShoppingCart } from '../../context/shoppingCartContext';
+import { emptyCartAction } from '../../reduxStore';
 import CartItem from '../CartItem';
 import Layout from '../layout/Layout';
 
 const CartPage = (props) => {
-  const { shoppingCart, emptyShoppingCart, total } = useShoppingCart();
+  const shoppingCart = useSelector(state => state.shoppingCart);
+
+  const total = shoppingCart.reduce((acc, cartItem) => {
+    return acc + (cartItem.price * cartItem.quantity);
+  }, 0);
+
+  const dispatch = useDispatch();
+
+  const emptyShoppingCart = () => {
+    dispatch({type: emptyCartAction})
+  }
 
   return (
     <Layout>

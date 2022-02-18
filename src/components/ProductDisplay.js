@@ -8,11 +8,13 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { shoppingCartContext, useShoppingCart } from '../context/shoppingCartContext';
+import { addItemToCartAction } from '../reduxStore';
 
 export default function ProductDisplay(props) {
 
-  const { addItemToCart } =  useShoppingCart();
+ const dispatch = useDispatch();
 
   const {
     product,
@@ -29,7 +31,16 @@ export default function ProductDisplay(props) {
 
   const handleAddToCart = () => {
     console.log('This func has been call')
-    addItemToCart(product)
+    
+    dispatch({
+      type: addItemToCartAction,
+      cartItem: {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image
+      }
+    })
   }
 
   return (
