@@ -6,7 +6,6 @@ import CartPage from './components/pages/CartPage';
 import CounterPage from "./components/pages/CounterPage";
 import HomePage from './components/pages/HomePage';
 import SignInPage from './components/pages/SignInPage';
-import { ShoppingCartProvider } from "./context/shoppingCartContext";
 
 import { Provider } from 'react-redux'
 import store from "./reduxStore";

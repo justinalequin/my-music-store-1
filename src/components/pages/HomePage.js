@@ -20,39 +20,29 @@ const HomePage = (props) => {
 
 
   return (
-  <Layout color="red">
-    <button onClick={() => {
-      dispatch({type: "USER_LOGGED_IN"})
-    }}> logg in user </button>
-
-
-  {/* Button to add to cart */}
-  <button onClick={() => dispatch({type: 'ADD_TO_CART'})}>add item to cart</button>
-
-
-
-    <Box p={4}>
-      {productData.map(product => (
-        <Box
-          key={product.id}
-          mb={4}
-          display="flex"
-          alignItems="center"
-        >
-          <ProductDisplay
-            product={{
-              id: product.id,
-              title: product.title,
-              brand: product.brand,
-              price: product.price,
-              description: product.description,
-              image: product.image,
-            }}
-            /> 
-        </Box>
-      ))}
-    </Box>
-  </Layout>
+    <Layout>
+      <Box p={4}>
+        {productData.map(product => (
+          <Box
+            key={product.id}
+            mb={4}
+            display="flex"
+            alignItems="center"
+          >
+            <ProductDisplay
+              product={{
+                id: product.id,
+                title: product.title,
+                brand: product.brand,
+                price: product.price,
+                description: product.description,
+                image: product.image,
+              }}
+              /> 
+          </Box>
+        ))}
+      </Box>
+    </Layout>
   )
 };
 
